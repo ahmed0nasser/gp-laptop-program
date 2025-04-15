@@ -33,7 +33,7 @@ async def echo(websocket):
             if client_processes[websocket]:
                 print(f"Terminating previous process for {client_ip}")
                 client_processes[websocket].terminate()
-                await client_processes[websocket].wait()
+                client_processes[websocket].wait()
 
             parsed_message = message.split(":")
 
@@ -57,13 +57,6 @@ async def echo(websocket):
                 print(f"Unknown command: {message}")
     except websockets.exceptions.ConnectionClosed:
         print(f"Client {client_ip} disconnected")
-    finally:
-        if client_processes.get(websocket):
-            print(f"Terminating process for {client_ip} on disconnection.")
-            client_processes[websocket].terminate()
-            await client_processes[websocket].wait()
-            del client_processes[websocket]
-        print(f"Connection with {client_ip} closed")
 
 async def main():
     print(f"WebSocket server is running on ws://{local_ip}:{port}")
