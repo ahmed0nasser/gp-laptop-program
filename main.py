@@ -35,6 +35,11 @@ async def echo(websocket):
                 client_processes[websocket].terminate()
                 client_processes[websocket].wait()
 
+            if message == "reset":
+                transmitter.send_command("STOP|REMOTE")  # Stop movement
+                print("Mode selection Reseted")
+                return
+
             parsed_message = message.split(":")
 
             if parsed_message[0] == "select_mode":
@@ -47,13 +52,9 @@ async def echo(websocket):
                     process = subprocess.Popen(["python", "./project_scripts/speech_vosk2.py"])
                 elif mode == "hand":
                     process = subprocess.Popen(["python", "./project_scripts/hand.py"])
-                elif mode == "reset":
-                    transmitter.send_command("STOP|REMOTE")  # Stop movement
-                    return
                 else:
                     print(f"Unknown mode: {mode}")
                     return
-
                 print(f"Execute {mode} mode")
                 client_processes[websocket] = process
             elif parsed_message[0] == "remote":
