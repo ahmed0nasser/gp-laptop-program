@@ -3,4 +3,8 @@ bin/
 include/
 lib/
 lib64/
+lib64/*
+__pycache__
+project_scripts/__pycache__/
 pyvenv.cfg
+TODO.md
