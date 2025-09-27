@@ -1,7 +1,5 @@
 # Smart Wheelchair Control System
 
-![Wheelchair](https://via.placeholder.com/468x200?text=Smart+Wheelchair+Project)
-
 This repository contains the core laptop program for a smart wheelchair system. It acts as a central hub, integrating with a mobile application and the wheelchair's hardware to provide advanced control and monitoring capabilities.
 
 ---
