@@ -1,0 +1,7 @@
+websockets
+sounddevice
+vosk
+numpy
+matplotlib
+opencv-python
+mediapipe
