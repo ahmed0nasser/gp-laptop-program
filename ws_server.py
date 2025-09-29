@@ -82,7 +82,7 @@ async def wss(websocket):
                 if parsed_message[0] == "select_mode" and not client_processes.get(websocket):  # Mode selection
                     mode = parsed_message[1]
                     if mode in ["face", "eye", "voice", "hand"]:
-                        script = f"./project_scripts/{mode}.py"
+                        script = f"./control_scripts/{mode}.py"
                         process = subprocess.Popen(["python", script])
                         logger.info(f"Executing {mode} mode")
                         client_processes[websocket] = process
